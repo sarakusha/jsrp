@@ -44,3 +44,8 @@ describe 'High-level Implementation', ->
 			it 'client should accept server proof', ->
 				sProof = server.getProof()
 				client.checkServerProof(sProof).should.equal(true)
+
+			it 'decrypting the encrypted text matches the original', ->
+				text = 'blah-blah-blah'
+				server.decrypt(client.encrypt(text)).should.equal(text);
+				client.decrypt(server.encrypt(text)).should.equal(text);

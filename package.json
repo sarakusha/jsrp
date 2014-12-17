@@ -4,6 +4,7 @@
   "description": "JavaScript SRP implementation",
   "main": "jsrp.js",
   "scripts": {
+    "browser": "coffee --compile --output lib src && browserify -g uglifyify jsrp-client.js --standalone jsrp -o jsrp-browser.min.js",
     "test": "mocha -R spec --compilers coffee:coffee-script"
   },
   "author": "Alax Villmann",
@@ -12,9 +13,10 @@
     "jsbn": "0.0.0"
   },
   "devDependencies": {
+    "coffee-script": "latest",
+    "mocha": "^1.20.1",
     "should": "^4.0.4",
-    "coffee-script": "1.6.3",
-    "mocha": "^1.20.1"
+    "uglifyify": "latest"
   },
   "directories": {
     "test": "test"

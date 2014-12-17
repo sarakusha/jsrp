@@ -1,5 +1,6 @@
 transform = require './transform'
 SRP = require './srp'
+crypto = require 'crypto'
 
 # This is a high-level client interface for the SRP protocol.
 class Server
@@ -72,5 +73,13 @@ class Server
 
 		result = @M2Buf.toString('hex')
 		return result
+
+	encrypt: (data, encoding = 'utf8')->
+		cipher = crypto.createCipher('aes256', @KBuf)
+		return cipher.update(data, encoding, 'hex') + cipher.final('hex');
+
+	decrypt: (hex, encoding = 'utf8')->
+		decipher = crypto.createDecipher('aes256', @KBuf)
+		return decipher.update(hex, 'hex', encoding) + decipher.final(encoding);
 
 module.exports = Server

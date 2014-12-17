@@ -39,9 +39,9 @@ class SRP
 	# Returns Buffer
 	v: (options) ->
 		# Expects salt, I, P
-		I = options.I
-		P = options.P
-		salt = options.salt
+#		I = options.I
+#		P = options.P
+#		salt = options.salt
 
 		result = @params.g.modPow @x(options), @params.N
 		result = transform.pad.toN result, @params
