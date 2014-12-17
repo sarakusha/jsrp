@@ -5,7 +5,7 @@
   "main": "jsrp.js",
   "scripts": {
     "browser": "coffee --compile --output lib src && browserify -g uglifyify jsrp-client.js --standalone jsrp -o jsrp-browser.min.js",
-    "test": "mocha -R spec --compilers coffee:coffee-script"
+    "test": "mocha -R spec --compilers coffee:coffee-script/register"
   },
   "author": "Alax Villmann",
   "license": "MIT",
